@@ -4,13 +4,13 @@ import { v4 as uuidv4 } from 'uuid'
 import dayjs from 'dayjs'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBsrh8MhMPE7stGQf7wt7m7MQ7rstMNt8M",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "sample-project-9e4c2.firebaseapp.com",
   databaseURL: "https://sample-project-9e4c2-default-rtdb.firebaseio.com",
   projectId: "sample-project-9e4c2",
   storageBucket: "sample-project-9e4c2.appspot.com",
-  messagingSenderId: "199794781922",
-  appId: "1:199794781922:web:44e0854712ce3ab58278bb"
+  messagingSenderId: import.meta.env.VITE_MSG_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 }
 
 // init
