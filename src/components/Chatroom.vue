@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0 w-25 chatroom-container">
+  <v-container class="pa-0 chatroom-container">
     <Login
       v-if="step === 1"
       @next="nextStep"
@@ -31,7 +31,9 @@
 <style lang="scss" scoped>
 .chatroom-container{
     margin: 0 auto;
-    border: 1px solid #F4F4F4;
+    border: 1px solid #3b3b3b;
+    max-width: 50%;
+    min-width: 500px;
 }
 </style>
 

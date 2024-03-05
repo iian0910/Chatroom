@@ -18,6 +18,6 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .info-block {
-  background-color: azure;
+  background-color: rgb(96, 199, 199);
 }
 </style>

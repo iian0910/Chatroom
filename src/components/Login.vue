@@ -1,6 +1,6 @@
 <template>
-  <div class="login-block mt-10">
-      <div class="text-center">請輸入暱稱：</div>
+  <div class="login-block">
+      <div class="text-center mt-8">請輸入暱稱：</div>
       <v-responsive
           class="mx-auto my-8"
           max-width="300px"
