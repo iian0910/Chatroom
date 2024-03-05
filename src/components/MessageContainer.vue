@@ -1,11 +1,11 @@
 <template>
-  <div class="message-container pb-10" align="end">
-      <div class="message-block" ref="messageContainer">
+  <div class="message-container mb-3" align="end">
+      <div class="message-block my-3" ref="messageContainer">
           <div
               v-for="(item) in messages"
               :class="['d-flex flex-row align-center my-2', item.username === username ? 'justify-end': null]"
               :key="item.key">
-              <span v-if="item.username === username" class="mx-3 pa-2 rounded msg-border-user">
+              <span v-if="item.username === username" class="mx-3 rounded msg-border-user">
                   <v-chip>{{ item.message }}</v-chip>
               </span>
               <div v-if="item.username !== username" class="d-flex mx-2">
@@ -15,7 +15,7 @@
                       </v-avatar>
                       <span>{{ item.username }}</span>
                   </div>
-                  <span class="mx-3 pa-2 rounded msg-border-service">
+                  <span class="mx-3 rounded msg-border-service">
                       <v-chip color="secondary">{{ item.message }}</v-chip>
                   </span>
               </div>
@@ -57,7 +57,7 @@
 
 <style lang="scss" scoped>
 .message-container{
-    height: 80vh;
+    height: 300px;
 }
 .message-block{
     height: 100%;

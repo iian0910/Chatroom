@@ -37,6 +37,8 @@ onMounted(() => {
         }
         size++
       })
+    } else {
+      messages.value = []
     }
   }, (error) => {
     console.log(error)
