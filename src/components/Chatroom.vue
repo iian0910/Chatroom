@@ -32,7 +32,7 @@
 .chatroom-container{
   margin: 0 auto;
   border: 1px solid #3b3b3b;
-  width: 50%;
+  width: 360px;
   position: absolute;
   top: 50%;
   left: 50%;
