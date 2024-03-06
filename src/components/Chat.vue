@@ -8,25 +8,23 @@
 </template>
 
 <script setup>
-import Info from './Info.vue';
-import MessageContainer from './MessageContainer.vue';
-import MessageInput from './MessageInput.vue';
+import Info from './Info.vue'
+import MessageContainer from './MessageContainer.vue'
+import MessageInput from './MessageInput.vue'
 import dayjs from 'dayjs'
-import { onMounted, ref, watch } from 'vue';
-import { onValue } from 'firebase/database';
-import { realtimeRef } from '../firebase.config';
-
-const props = defineProps({
-  username: {
-    type: String,
-    required: true
-  }
-})
+import { onMounted, ref, watch } from 'vue'
+import { onValue } from 'firebase/database'
+import { realtimeRef } from '../firebase.config'
+import { useRoute } from 'vue-router'
 
 let loginTimestamp = 0
 let messages = ref([])
+const username = ref('')
+
+const route = useRoute()
 
 onMounted(() => {
+  username.value = route.query.username
   loginTimestamp = dayjs().unix()
   onValue(realtimeRef, (snapshot) => {
     if (snapshot.exists()) {
@@ -43,6 +41,7 @@ onMounted(() => {
   }, (error) => {
     console.log(error)
   })
+
 })
 
 </script>
