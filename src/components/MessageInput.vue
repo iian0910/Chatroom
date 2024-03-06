@@ -47,11 +47,11 @@ const send = () => {
     sendController.value = false
     writeUserData(props.username, msg.value)
     setTimeout(() => {
-        sendController.value = true
+      sendController.value = true
     }, 1000)
     msg.value = ''
   } catch (error) {
-      console.log('error: ', error)
+    console.log('error: ', error)
   }
   toFocusMessageInput()
 }

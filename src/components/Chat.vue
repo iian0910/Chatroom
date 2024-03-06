@@ -12,7 +12,7 @@ import Info from './Info.vue';
 import MessageContainer from './MessageContainer.vue';
 import MessageInput from './MessageInput.vue';
 import dayjs from 'dayjs'
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { onValue } from 'firebase/database';
 import { realtimeRef } from '../firebase.config';
 
@@ -44,6 +44,7 @@ onMounted(() => {
     console.log(error)
   })
 })
+
 </script>
 
 <style scoped>

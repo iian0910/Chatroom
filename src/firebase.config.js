@@ -19,7 +19,12 @@ const app = initializeApp(firebaseConfig)
 export const database = getDatabase(app)
 // building db ref
 export const realtimeRef = ref(database, 'chatroom')
-// write data
+export const usernameRef = ref(database, 'username')
+// save username
+export const writeUserName = (username) => {
+  set(ref(database, `username`), username)
+}
+// save chat
 export const writeUserData = (username, message) => {
   set(ref(database, `chatroom/${dayjs().unix()}`), {
     key: uuidv4(),
