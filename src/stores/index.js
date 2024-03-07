@@ -11,5 +11,6 @@ export const chatroomStore = defineStore('chatRoom', {
     Login() {
       this.isLogin = true
     }
-  }
+  },
+  persist: true
 })
