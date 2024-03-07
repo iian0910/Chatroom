@@ -39,45 +39,48 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-  import { usernameRef, writeUserName } from '../firebase.config'
-  import { onValue } from 'firebase/database'
-  import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { usernameRef, writeUserName } from '../firebase.config'
+import { onValue } from 'firebase/database'
+import { useRouter } from 'vue-router'
+import { chatroomStore } from '../stores/index'
 
-  const router = useRouter()
-  const username = ref('')
-  const userList = ref([])
-  const duplicateUsername = ref(false)
+const router = useRouter()
+const username = ref('')
+const userList = ref([])
+const duplicateUsername = ref(false)
+const store = chatroomStore()
 
-  const nextStep = async (name) => {
-    // 先檢查是否存在相同暱稱
-    onValue(usernameRef, (snapshot) => {
-      if (snapshot.exists()) {
-        snapshot.forEach(username => {
-          if (username.val() === name) {
-            duplicateUsername.value = true
-          } else {
-            duplicateUsername.value = false
-            const _newList = snapshot.val()
-            _newList.push(name)
-            userList.value = _newList
-            writeUserName(userList.value)
-            
-          }
-        })
-      } else {
-        const _newList = []
-        _newList.push(name)
-        userList.value = _newList
-        writeUserName(userList.value)
-      }
+const nextStep = async (name) => {
+  // 先檢查是否存在相同暱稱
+  onValue(usernameRef, (snapshot) => {
+    if (snapshot.exists()) {
+      snapshot.forEach(username => {
+        if (username.val() === name) {
+          duplicateUsername.value = true
+        } else {
+          duplicateUsername.value = false
+          const _newList = snapshot.val()
+          _newList.push(name)
+          userList.value = _newList
+          writeUserName(userList.value)
+          
+        }
+      })
+    } else {
+      const _newList = []
+      _newList.push(name)
+      userList.value = _newList
+      writeUserName(userList.value)
+    }
 
-      if (name !== '' && !duplicateUsername.value) {
-        router.push({
-          path: '/Chatroom/Chat',
-          query: { username: username.value }
-        })
-      }
-    }, { onlyOnce: true })
-  }
+    if (name !== '' && !duplicateUsername.value) {
+      router.push({
+        path: '/Chatroom/Chat',
+        query: { username: username.value }
+      })
+      store.Login()
+    }
+  }, { onlyOnce: true })
+}
 </script>
